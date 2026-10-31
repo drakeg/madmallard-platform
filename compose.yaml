@@ -48,10 +48,31 @@ services:
       timeout: 5s
       retries: 10
     networks: [backend]
+  matomo:
+    image: ${MATOMO_IMAGE:-matomo:5-apache}
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    environment:
+      MATOMO_DATABASE_HOST: mariadb
+      MATOMO_DATABASE_ADAPTER: MYSQLI
+      MATOMO_DATABASE_TABLES_PREFIX: matomo_
+      MATOMO_DATABASE_USERNAME: matomo
+      MATOMO_DATABASE_PASSWORD: ${MARIADB_MATOMO_PASSWORD:?Set MARIADB_MATOMO_PASSWORD}
+      MATOMO_DATABASE_DBNAME: matomo
+      TZ: ${TZ:-UTC}
+    volumes:
+      - matomo_data:/var/www/html
+    ports:
+      - "${MATOMO_BIND_IP:-127.0.0.1}:${MATOMO_PORT:-8088}:80"
+    networks: [backend, frontend]
 networks:
   backend:
     internal: true
+  frontend:
 volumes:
   postgres_data:
   mariadb_data:
   redis_data:
+  matomo_data:
