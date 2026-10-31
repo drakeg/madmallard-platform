@@ -67,6 +67,24 @@ services:
     ports:
       - "${MATOMO_BIND_IP:-127.0.0.1}:${MATOMO_PORT:-8088}:80"
     networks: [backend, frontend]
+  metabase:
+    image: ${METABASE_IMAGE:-metabase/metabase:latest}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: "5432"
+      MB_DB_USER: metabase
+      MB_DB_PASS: ${METABASE_DB_PASSWORD:?Set METABASE_DB_PASSWORD}
+      MB_DB_HOST: postgres
+      MB_ENCRYPTION_SECRET_KEY: ${METABASE_ENCRYPTION_SECRET_KEY:?Set METABASE_ENCRYPTION_SECRET_KEY}
+      JAVA_TIMEZONE: ${TZ:-UTC}
+    ports:
+      - "${METABASE_BIND_IP:-127.0.0.1}:${METABASE_PORT:-3001}:3000"
+    networks: [backend, frontend]
 networks:
   backend:
     internal: true
