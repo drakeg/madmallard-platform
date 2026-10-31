@@ -120,3 +120,4 @@ volumes:
   mariadb_data:
   redis_data:
   matomo_data:
+  n8n_data:
