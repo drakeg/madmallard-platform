@@ -206,3 +206,5 @@ volumes:
   matomo_data:
   n8n_data:
   chatwoot_storage:
+  horilla_media:
+  horilla_static:
