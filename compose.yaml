@@ -179,3 +179,4 @@ volumes:
   redis_data:
   matomo_data:
   n8n_data:
+  chatwoot_storage:
