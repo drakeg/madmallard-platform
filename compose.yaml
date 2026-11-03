@@ -169,6 +169,32 @@ services:
       - chatwoot_storage:/app/storage
     networks: [backend, frontend]
     command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
+  horilla:
+    image: ${HORILLA_IMAGE:-horilla/horilla-hr:2.2.0}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DEBUG: "0"
+      HORILLA_ENV: production
+      SECRET_KEY: ${HORILLA_SECRET_KEY:?Set HORILLA_SECRET_KEY}
+      DB_INIT_PASSWORD: ${HORILLA_DB_INIT_PASSWORD:?Set HORILLA_DB_INIT_PASSWORD}
+      ALLOWED_HOSTS: ${HORILLA_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      CSRF_TRUSTED_ORIGINS: ${HORILLA_CSRF_TRUSTED_ORIGINS:-http://localhost:8000}
+      DB_ENGINE: django.db.backends.postgresql
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: horilla
+      DB_USER: horilla
+      DB_PASSWORD: ${HORILLA_DB_PASSWORD:?Set HORILLA_DB_PASSWORD}
+      TIME_ZONE: ${TZ:-UTC}
+    volumes:
+      - horilla_media:/app/media
+      - horilla_static:/app/staticfiles
+    ports:
+      - "${HORILLA_BIND_IP:-127.0.0.1}:${HORILLA_PORT:-8000}:8000"
+    networks: [backend, frontend]
 networks:
   backend:
     internal: true
