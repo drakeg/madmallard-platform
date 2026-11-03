@@ -15,5 +15,5 @@ jobs:
         run: |
           cp .env.example .env
           docker compose config --services | sort > actual.txt
-          printf 'mariadb\nmatomo\nmetabase\npostgres\nredis\n' > expected.txt
+          printf 'mariadb\nmatomo\nmetabase\nn8n\npostgres\nredis\n' > expected.txt
           diff -u expected.txt actual.txt
