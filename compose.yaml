@@ -1,7 +1,7 @@
 name: ${COMPOSE_PROJECT_NAME:-madmallard}
 services:
   postgres:
-    image: ${POSTGRES_IMAGE:-postgres:17}
+    image: ${POSTGRES_IMAGE:-postgres:18}
     restart: unless-stopped
     environment:
       POSTGRES_USER: platform_admin
