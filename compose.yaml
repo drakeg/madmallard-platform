@@ -83,7 +83,7 @@ services:
       MB_ENCRYPTION_SECRET_KEY: ${METABASE_ENCRYPTION_SECRET_KEY:?Set METABASE_ENCRYPTION_SECRET_KEY}
       JAVA_TIMEZONE: ${TZ:-UTC}
     ports:
-      - "${METABASE_BIND_IP:-127.0.0.1}:${METABASE_PORT:-3001}:3000"
+      - "${METABASE_BIND_IP:-127.0.0.1}:${METABASE_PORT:-3003}:3000"
     networks: [backend, frontend]
   n8n:
     image: ${N8N_IMAGE:-docker.n8n.io/n8nio/n8n:latest}
