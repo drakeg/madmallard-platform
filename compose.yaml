@@ -178,6 +178,8 @@ services:
     environment:
       DEBUG: "0"
       HORILLA_ENV: production
+      # Use DATABASE_URL to avoid Horilla 2.2.0 SQLite-only timeout option on PostgreSQL.
+      DATABASE_URL: "postgresql://horilla:${HORILLA_DB_PASSWORD:?Set HORILLA_DB_PASSWORD}@postgres:5432/horilla"
       SECRET_KEY: ${HORILLA_SECRET_KEY:?Set HORILLA_SECRET_KEY}
       DB_INIT_PASSWORD: ${HORILLA_DB_INIT_PASSWORD:?Set HORILLA_DB_INIT_PASSWORD}
       ALLOWED_HOSTS: ${HORILLA_ALLOWED_HOSTS:-localhost,127.0.0.1}
