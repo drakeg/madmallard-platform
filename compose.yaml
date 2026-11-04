@@ -170,7 +170,7 @@ services:
     networks: [backend, frontend]
     command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
   horilla:
-    image: ${HORILLA_IMAGE:-horilla/horilla-hr:2.2.0}
+    image: ${HORILLA_IMAGE:-horilla/horilla-hr:2.3.0}
     restart: unless-stopped
     depends_on:
       postgres:
