@@ -33,7 +33,7 @@ if ! docker compose config --quiet || ! docker compose up -d --no-deps umami; th
   docker compose up -d --no-deps umami
   exit 1
 fi
-for i in $(seq 1 36); do
+for ((attempt=0; attempt<36; attempt++)); do
   if [[ "$(docker inspect madmallard-umami-1 --format '{{if .State.Health}}{{.State.Health.Status}}{{end}}' 2>/dev/null)" == "healthy" ]] && curl -fsS --max-time 4 http://127.0.0.1:"${UMAMI_PORT:-3005}"/ >/dev/null; then
     rm -f .env.umami-backup
     echo "Umami $SHA healthy and deployed"
