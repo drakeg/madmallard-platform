@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest Umami fork
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: drakeg/umami
           ref: master
