@@ -6,4 +6,3 @@
 backups/
 secrets/
 __pycache__/
-.env.umami-backup
