@@ -67,26 +67,6 @@ services:
     ports:
       - "${MATOMO_BIND_IP:-127.0.0.1}:${MATOMO_PORT:-8088}:80"
     networks: [backend, frontend]
-  umami:
-    image: ${UMAMI_IMAGE:-docker.umami.is/umami-software/umami:latest}
-    restart: unless-stopped
-    init: true
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      DATABASE_URL: "postgresql://umami:${UMAMI_DB_PASSWORD:?Set UMAMI_DB_PASSWORD}@postgres:5432/umami"
-      APP_SECRET: ${UMAMI_APP_SECRET:?Set UMAMI_APP_SECRET}
-      TZ: ${TZ:-UTC}
-    ports:
-      - "${UMAMI_BIND_IP:-127.0.0.1}:${UMAMI_PORT:-3005}:3000"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/api/heartbeat >/dev/null"]
-      interval: 15s
-      timeout: 5s
-      retries: 12
-      start_period: 60s
-    networks: [backend, frontend]
   metabase:
     image: ${METABASE_IMAGE:-metabase/metabase:latest}
     restart: unless-stopped
