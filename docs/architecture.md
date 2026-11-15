@@ -2,11 +2,10 @@
 
 ## Deployment boundaries
 
-This first milestone supplies **infrastructure only**: PostgreSQL, MariaDB,
-and Redis. It does not yet deploy the eight planned applications.
-
-The final release will expose a single primary Compose entrypoint while
-allowing integration with an existing Traefik and monitoring installation.
+The Compose deployment currently includes PostgreSQL, MariaDB, Redis,
+Matomo, Metabase, n8n, Chatwoot (web and worker), and Horilla.
+Supabase, Authentik, and Homepage are future milestones. The services
+are not yet unified behind a portal or SSO provider.
 
 ## Shared resources
 
@@ -25,11 +24,9 @@ internal Docker network. Credentials must never be committed. Replace example
 secrets before starting. A later milestone will move production credentials to
 Docker secrets and define rotation procedures.
 
-## Roadmap
+## Next milestones
 
-1. Infrastructure and validation (this PR).
-2. Database provisioning and secrets.
-3. Vendor-supported Supabase services and migration checks.
-4. Matomo, Metabase, n8n, Chatwoot, Horilla.
-5. Authentik, portal, SSO integration and branding.
-6. Traefik integration, observability, backups, restore drills and security hardening.
+1. Add automated live smoke tests and per-service healthchecks.
+2. Evaluate supported Supabase deployment and migrations.
+3. Integrate Authentik, a portal, SSO and branding.
+4. Traefik integration, observability, backup/restore drills and security hardening.
