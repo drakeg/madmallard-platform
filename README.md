@@ -2,7 +2,7 @@
 
 Portable, open-source Docker Compose deployment for a shared business application platform.
 
-## Planned applications
+## Applications and roadmap
 - Matomo — web analytics
 - Supabase — backend platform
 - Metabase — business intelligence
@@ -23,7 +23,14 @@ Portable, open-source Docker Compose deployment for a shared business applicatio
 - Use supported, pinned container versions; never commit secrets.
 - Include validation, tests, security checks, backup/restore instructions and operational runbooks.
 
-> Status: Initial repository setup. The complete stack is not yet implemented or deployable.
+> Status: Docker Compose currently deploys Matomo, Metabase, Chatwoot (web and worker), n8n, and Horilla, backed by PostgreSQL, MariaDB, and Redis. Supabase, Authentik, and Homepage remain planned. Production readiness and single sign-on are not yet complete.
+
+## Local operations
+
+Copy `.env.example` to `.env`, replace all example secrets, and run `docker compose config --quiet` before `docker compose up -d`. Run `bash scripts/audit-runtime.sh` to report missing, stopped, or unhealthy Compose services without modifying them. A service without a Docker healthcheck is reported as `not-configured`, not proven healthy.
+
+Never run `docker compose down -v` unless you intend to delete persistent application data.
+
 
 ## Licensing
 The original orchestration, scripts and documentation in this repository are MIT licensed. Referenced third-party applications and container images retain their own respective licenses and trademark rights. See [LICENSE](LICENSE).
