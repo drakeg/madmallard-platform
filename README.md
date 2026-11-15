@@ -32,5 +32,7 @@ Copy `.env.example` to `.env`, replace all example secrets, and run `docker comp
 Never run `docker compose down -v` unless you intend to delete persistent application data.
 
 
+For access from other computers, see [LAN deployment guidance](docs/local-network.md) and run `bash scripts/check-lan-readiness.sh` before changing any network bindings.
+
 ## Licensing
 The original orchestration, scripts and documentation in this repository are MIT licensed. Referenced third-party applications and container images retain their own respective licenses and trademark rights. See [LICENSE](LICENSE).
