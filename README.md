@@ -27,7 +27,7 @@ Portable, open-source Docker Compose deployment for a shared business applicatio
 
 ## Local operations
 
-Copy `.env.example` to `.env`, replace all example secrets, and run `docker compose config --quiet` before `docker compose up -d`. Run `bash scripts/audit-runtime.sh` to report missing, stopped, or unhealthy Compose services without modifying them. A service without a Docker healthcheck is reported as `not-configured`, not proven healthy.
+Copy `.env.example` to `.env`, replace all example secrets, and run `docker compose config --quiet` before `docker compose up -d`. Run `python3 scripts/check-http-health.py` to probe the five browser-facing applications from the Docker host without altering data. HTTP checks can succeed for login/setup pages and do not prove full application health. Run `bash scripts/audit-runtime.sh` to report missing, stopped, or unhealthy Compose services without modifying them. A service without a Docker healthcheck is reported as `not-configured`, not proven healthy.
 
 Never run `docker compose down -v` unless you intend to delete persistent application data.
 
