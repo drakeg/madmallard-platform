@@ -1,5 +1,10 @@
 # Mad Mallard Platform
 
+[![Compose validation](https://github.com/drakeg/madmallard-platform/actions/workflows/validate.yml/badge.svg)](https://github.com/drakeg/madmallard-platform/actions/workflows/validate.yml) [![Shell checks](https://github.com/drakeg/madmallard-platform/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/drakeg/madmallard-platform/actions/workflows/shellcheck.yml) [![License](https://img.shields.io/github/license/drakeg/madmallard-platform)](LICENSE)
+[![Docker Compose](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](compose.yaml) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)](compose.yaml) [![MariaDB](https://img.shields.io/badge/MariaDB-configured-003545?logo=mariadb&logoColor=white)](compose.yaml) [![Redis](https://img.shields.io/badge/Redis-configured-DC382D?logo=redis&logoColor=white)](compose.yaml) [![Python](https://img.shields.io/badge/Python-smoke_tests-3776AB?logo=python&logoColor=white)](scripts/check-http-health.py)
+[![Latest release](https://img.shields.io/github/v/release/drakeg/madmallard-platform?display_name=tag)](https://github.com/drakeg/madmallard-platform/releases) [![Issues](https://img.shields.io/github/issues/drakeg/madmallard-platform)](https://github.com/drakeg/madmallard-platform/issues) [![Pull requests](https://img.shields.io/github/issues-pr/drakeg/madmallard-platform)](https://github.com/drakeg/madmallard-platform/pulls)
+
+
 Portable, open-source Docker Compose deployment for a shared business application platform.
 
 ## Applications and roadmap
