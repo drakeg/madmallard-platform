@@ -49,7 +49,7 @@ services:
       retries: 10
     networks: [backend]
   matomo:
-    image: ${MATOMO_IMAGE:-matomo:5-apache}
+    image: ${MATOMO_IMAGE:-matomo:6-apache}
     restart: unless-stopped
     depends_on:
       mariadb:
